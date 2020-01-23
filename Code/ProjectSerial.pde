@@ -15,20 +15,22 @@ void setup(){
  
  //Open the serial port for communication with the Arduino
  //Make sure the COM port is correct
- //myPort = new Serial(this, "COM9", 9600);
- //myPort.bufferUntil('\n');
+ myPort = new Serial(this, "COM9", 9600);
+ myPort.bufferUntil('\n');
 }
 
 void draw() {
  readData("C:/Users/David Cha/PycharmProjects/Senior Project/data.txt");
  
  for(int i=0; i<data.length; i++){
- //myPort.write(Integer.parseInt(data[i][2].substring(5))+" "+Integer.parseInt(data[i][3].substring(9))));
- System.out.println(""+(Integer.parseInt(data[i][2].substring(5))));
- delay(Integer.parseInt(data[i][4].substring(5)));
- System.out.println("velocity "+(Integer.parseInt(data[i][3].substring(9))));
- //myPort.write(0);
- delay(100);
+ myPort.write(Integer.parseInt(data[i][2].substring(5))+" "+Integer.parseInt(data[i][3].substring(9)));
+ //System.out.println("note "+(Integer.parseInt(data[i][2].substring(5))));
+ //System.out.println("velocity "+(Integer.parseInt(data[i][3].substring(9))));
+ //System.out.println("time "+(Integer.parseInt(data[i+1][4].substring(5))));
+ delay(Integer.parseInt(data[i+1][4].substring(5)));
+ //myPort.write(Integer.parseInt(data[i+1][4].substring(5)));
+ //delay(100);
+ i++;
  }
 } 
 
